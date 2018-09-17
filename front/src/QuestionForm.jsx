@@ -7,19 +7,22 @@ export default class QuestionForm extends React.Component {
       content: ""
     };
     this.changeText = this.changeText.bind(this);
-    // this.handleClick = this.handleClick.bind(this);
+    this.clickNextButton = this.clickNextButton.bind(this);
   }
 
   changeText(e) {
     this.setState({ content: e.target.value });
-    console.log(this.state)
+  }
+
+  clickNextButton(){
+    this.setState({ content: "" })
   }
 
   render() {
     return (
       <div>
-        <input type="text" name="hello" onChange={this.changeText} />
-        <button onClick={this.addNextButton}>次へ</button>
+        <input type="text" value={this.state.content} name="hello" onChange={this.changeText} />
+        <button onClick={this.clickNextButton}>次へ</button>
       </div>
     );
   }
