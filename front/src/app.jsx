@@ -1,28 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
-import QuestionTitle from './QuestionTitle';
-import QuestionForm from './QuestionForm';
-
-// export default class App extends React.Component{
-//     constructor(props){
-//         super(props);
-
-//     }
-    
-//     render(){
-//         return(
-//             <div className="App">
-//                 <QuestionTitle />
-//             </div>
-//         )
-//     }
-// }
+import React from "react";
+import ReactDOM from "react-dom";
+import QuestionTitle from "./QuestionTitle";
+import Button from "./Button";
+import QuestionForm from "./QuestionForm";
 
 ReactDOM.render(
-    <div>
-        Hello react
-        <QuestionTitle />
-        <QuestionForm />
-    </div>,
-    document.getElementById('root')
-)
+  <div>
+    <QuestionTitle />
+    <QuestionForm />
+    <Button />
+  </div>,
+  document.getElementById("root")
+);
