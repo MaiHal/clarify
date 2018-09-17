@@ -5,7 +5,8 @@ export default class QuestionForm extends React.Component {
     super(props);
     this.state = {
       content: "",
-      questionID: 1
+      questionID: 1,
+      questionTitle: ""
     };
     this.changeText = this.changeText.bind(this);
     this.clickNextButton = this.clickNextButton.bind(this);
@@ -36,18 +37,40 @@ export default class QuestionForm extends React.Component {
         throw new Error(resp.statusText);
       })
       .then(x => x.json())
-      .then(res => {
-        console.log(res);
+      .then(json => {
+        console.log(json);
       })
       .catch(err => {
-        console.error("post message error: ", err);
+        console.error("post error: ", err);
+      });
+
+    fetch(" /questions/" + this.state.questionID, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then(resp => {
+        if (resp.status !== 200) {
+          throw new Error(resp.statusText);
+        }
+        return resp;
+      })
+      .catch(err => {
+        console.error("get info error: ", err);
+      })
+      .then(x => x.json())
+      .then(json => {
+        console.log(json);
+        this.setState({ questionTitle: json.content, questionID: json.id });
       });
   }
 
   render() {
     return (
       <div>
-        <div>問題を表示します</div>
+        <div>{this.state.questionTitle}</div>
         <input
           type="text"
           value={this.state.content}
