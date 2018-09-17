@@ -6,7 +6,8 @@ export default class QuestionForm extends React.Component {
     this.state = {
       content: "",
       questionID: 1,
-      questionTitle: ""
+      number: 0,
+      questionTitle: "問題に関連する、言語やツールを入力してください。"
     };
     this.changeText = this.changeText.bind(this);
     this.clickNextButton = this.clickNextButton.bind(this);
@@ -19,7 +20,8 @@ export default class QuestionForm extends React.Component {
   clickNextButton() {
     const answer = {
       question_id: this.state.question_id,
-      input: this.state.content
+      input: this.state.content,
+      number: this.state.number + 1
     };
 
     fetch("/results/" + this.state.questionID, {
@@ -38,6 +40,7 @@ export default class QuestionForm extends React.Component {
       })
       .then(x => x.json())
       .then(json => {
+        //   何が返ってきたのかをみる
         console.log(json);
       })
       .catch(err => {
@@ -69,16 +72,55 @@ export default class QuestionForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>{this.state.questionTitle}</div>
+      <div style={styles.container}>
+        <div style={styles.text}>{this.state.questionTitle}</div>
         <input
+          style={styles.textBox}
           type="text"
           value={this.state.content}
           name="hello"
           onChange={this.changeText}
         />
-        <button onClick={this.clickNextButton}>次へ</button>
+        <button onClick={this.clickNextButton} style={styles.button}>
+          <div style={styles.icon} />
+        </button>
       </div>
     );
   }
 }
+
+const styles = {
+  container: {
+    backgroundColor: "#3c444c",
+    height: "2000px",
+    width: "2000px"
+  },
+  text: {
+    color: "white",
+    paddingLeft: "25%",
+    paddingTop: "10%"
+  },
+  textBox: {
+    marginTop: "20px",
+    marginLeft: "30%",
+    borderRadius: "5%"
+  },
+  button: {
+    height: 50,
+    width: 50,
+    borderRadius: "50%",
+    backgroundColor: "#3c444c",
+    borderColor: "#3c444c"
+  },
+  icon: {
+    color: "#FF570D",
+    position: "absolute",
+    marginLeft: "3px",
+    marginTop: "4px",
+    width: "14px",
+    height: "8px",
+    borderBottom: "solid 1px currentColor",
+    borderLeft: "solid 1px currentColor",
+    transform: "rotate(-45deg)"
+  }
+};
