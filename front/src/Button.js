@@ -6,7 +6,6 @@ class Button extends React.Component {
   }
 
   render() {
-    console.log("oooo");
     return <button onClick={this.addNextButton}>次へ</button>;
   }
 }
