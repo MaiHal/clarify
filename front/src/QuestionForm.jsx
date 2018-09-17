@@ -21,6 +21,7 @@ export default class QuestionForm extends React.Component {
   render() {
     return (
       <div>
+          <div></div>
         <input type="text" value={this.state.content} name="hello" onChange={this.changeText} />
         <button onClick={this.clickNextButton}>次へ</button>
       </div>
