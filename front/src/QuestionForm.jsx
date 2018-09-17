@@ -12,12 +12,14 @@ export default class QuestionForm extends React.Component {
 
   changeText(e) {
     this.setState({ content: e.target.value });
+    console.log(this.state)
   }
 
   render() {
     return (
       <div>
         <input type="text" name="hello" onChange={this.changeText} />
+        <button onClick={this.addNextButton}>次へ</button>
       </div>
     );
   }
