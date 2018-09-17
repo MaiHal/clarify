@@ -10,7 +10,7 @@ export default class QuestionTitle extends React.Component{
     render(){
         return(
             <div>
-                "hello"
+                hello
             </div>
         )
     }
