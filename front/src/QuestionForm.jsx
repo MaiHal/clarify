@@ -102,15 +102,19 @@ const styles = {
   },
   textBox: {
     marginTop: "20px",
-    marginLeft: "30%",
-    borderRadius: "5%"
+    marginLeft: "20%",
+    borderRadius: "5%",
+    width: "30%"
   },
   button: {
     height: 50,
     width: 50,
     borderRadius: "50%",
     backgroundColor: "#3c444c",
-    borderColor: "#3c444c"
+    borderColor: "#3c444c",
+    position: "absolute",
+    top: 280,
+    left: 670
   },
   icon: {
     color: "#FF570D",
